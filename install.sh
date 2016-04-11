@@ -1,9 +1,9 @@
 	#!/bin/bash
 sudo apt-get update && sudo apt-get upgrade -y
-sudo echo "display_rotate=1" >> /boot/config.txt
+% echo "display_rotate=1" | sudo tee -a  /boot/config.txt
 sudo apt-get install apache2 apache2-doc apache2-utils -y
 sudo apt-get install libapache2-mod-php5 php5 php-pear php5-xcache -y
-sudo apt-get install x11-xserver-utils unclutter -y\
+sudo apt-get install x11-xserver-utils unclutter -y
 sudo apt-get install php5-curl -y
 cd /tmp
 wget -qO - http://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
@@ -15,8 +15,8 @@ tar -xvf node-v4.0.0-linux-armv7l.tar.gz
 cd node-v4.0.0-linux-armv7l
 sudo cp -R * /usr/local/
 cd ~
-git clone https://github.com/evancohen/smart-mirror.git
-cd smart-mirror
+git clone https://github.com/wttechsolutions/Mirror.git
+cd Mirror
 npm install
 sudo echo "# Chromium API Keys" >> ~/.profile
 sudo echo "export GOOGLE_API_KEY=AIzaSyCe0ttlkPAgZlw6-Vl8kx-aQ1Qgd8XN0oA" >> ~/.profile
@@ -30,7 +30,7 @@ sudo echo "/home/pi/smart-start.sh &" >> ~/.config/lxsession/LXDE-pi/autostart
 sudo echo "#!/bin/bash" > ~/smart-start.sh
 sudo echo "export DISPLAY=:0" >> ~/smart-start.sh
 sudo echo "export XAUTHORITY=/home/pi/.Xauthority" >> ~/smart-start.sh
-sudo echo "cd /home/pi/smart-mirror && npm start" >> ~/smart-start.sh
+sudo echo "cd /home/pi/Mirror && npm start" >> ~/smart-start.sh
 chown pi:pi /home/pi/smart-start.sh
 chmod +x /home/pi/smart-start.sh
 sudo aptitude install pulseaudio -y
