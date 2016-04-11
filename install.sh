@@ -33,5 +33,6 @@ sudo echo "export XAUTHORITY=/home/pi/.Xauthority" >> ~/smart-start.sh
 sudo echo "cd /home/pi/smart-mirror && npm start" >> ~/smart-start.sh
 chown pi:pi /home/pi/smart-start.sh
 chmod +x /home/pi/smart-start.sh
-
-
+sudo aptitude install pulseaudio -y
+sudo modprobe snd_bcm2835
+sudo amixer cset numid=3 0
