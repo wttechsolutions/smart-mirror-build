@@ -1,6 +1,7 @@
 	#!/bin/bash
 sudo apt-get update && sudo apt-get upgrade -y
-% echo "display_rotate=1" | sudo tee -a  /boot/config.txt
+sudo sh -c  'echo "display_rotate=1" >>  /boot/config.txt'
+sudo sed -i -e "s/hdmi_drive=1/hdmi_drive=2/g" /boot/config.txt
 sudo apt-get install apache2 apache2-doc apache2-utils -y
 sudo apt-get install libapache2-mod-php5 php5 php-pear php5-xcache -y
 sudo apt-get install x11-xserver-utils unclutter -y
@@ -18,6 +19,8 @@ cd ~
 git clone https://github.com/wttechsolutions/Mirror.git
 cd Mirror
 npm install
+cd ~
+git clone https://github.com/wttechsolutions/NestAPI.git
 sudo echo "# Chromium API Keys" >> ~/.profile
 sudo echo "export GOOGLE_API_KEY=AIzaSyCe0ttlkPAgZlw6-Vl8kx-aQ1Qgd8XN0oA" >> ~/.profile
 sudo echo "export GOOGLE_DEFAULT_CLIENT_ID=991735777891-2v60hekmoodt1s46v9ei0sbu8n1htb6r.apps.googleusercontent.com" >> ~/.profile
@@ -36,3 +39,4 @@ chmod +x /home/pi/smart-start.sh
 sudo aptitude install pulseaudio -y
 sudo modprobe snd_bcm2835
 sudo amixer cset numid=3 0
+sudo sh -c 'reboot'
